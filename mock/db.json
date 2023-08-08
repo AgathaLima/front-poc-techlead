@@ -1,0 +1,21 @@
+{
+    "departamento": [
+      {
+        "id": 1,
+        "descricao": "Finaceiro"
+      }
+    ],
+    "usuarios": [
+      {
+        "id": 1,
+        "nome": "João das Neves",
+        "email": "teste@teste.com",
+        "cargo": "Admin",
+        "departamentoId": 1
+      }
+    ],
+    "login": {
+      "login": "joao.neves",
+      "senha": "123456"
+    }
+  }

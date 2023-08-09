@@ -1,21 +1,51 @@
 {
-    "departamento": [
-      {
-        "id": 1,
-        "descricao": "Finaceiro"
-      }
-    ],
-    "usuarios": [
-      {
-        "id": 1,
-        "nome": "João das Neves",
-        "email": "teste@teste.com",
-        "cargo": "Admin",
-        "departamentoId": 1
-      }
-    ],
-    "login": {
-      "login": "joao.neves",
-      "senha": "123456"
+  "departamento": [
+    {
+      "id": 1,
+      "descricao": "Finaceiro"
     }
+  ],
+  "usuarios": [
+    {
+      "nome": "João das Neves Ribeirão",
+      "cpf": "99999999999",
+      "email": "teste@teste.com",
+      "cargo": "Admin",
+      "departamentoId": 1,
+      "id": 1
+    },
+    {
+      "nome": "Maria Joaquina de Amaral",
+      "cpf": "88888888888",
+      "email": "teste@testeee.com",
+      "cargo": "Admin",
+      "departamentoId": 1,
+      "id": 2
+    },
+    {
+      "nome": "Agatha",
+      "email": "agatha@agatha.com",
+      "cargo": "Desenvolvedora Plena",
+      "departamentoId": 1,
+      "id": 3
+    },
+    {
+      "nome": "Luke",
+      "email": "luke@luke.com",
+      "cargo": "Back end",
+      "departamentoId": 1,
+      "id": 4
+    },
+    {
+      "nome": "Cassiano",
+      "email": "cassiani@cassiano.com",
+      "cargo": "fullstack",
+      "departamentoId": 1,
+      "id": 5
+    }
+  ],
+  "login": {
+    "login": "joao.neves",
+    "senha": "123456"
   }
+}

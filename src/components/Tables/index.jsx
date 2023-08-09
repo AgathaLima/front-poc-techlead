@@ -9,6 +9,9 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { listarUsuarios } from '../../service/api';
+//import { GoTrash } from "react-icons/go";
+import { BiEdit, BiTrash } from "react-icons/bi";
+import { Link } from 'react-router-dom';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -31,12 +34,14 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 const dados = [
-    { usuario: 'Usuário 1', departamento: 'departameto 1' },
-    { usuario: 'Usuário 2', departamento: 'departameto 2' },
-    { usuario: 'Usuário 3', departamento: 'departameto 3' },
-    { usuario: 'Usuário 4', departamento: 'departameto 4' },
-    { usuario: 'Usuário 5', departamento: 'departameto 5' },
-]
+        {
+            id: 1,
+            nome: "João das Neves",
+            email: "teste@teste.com",
+            cargo: "Admin",
+            departamentoId: 1
+        }
+    ]
 
 export function Tables() {
 
@@ -51,8 +56,6 @@ export function Tables() {
         setUsuarios(dados)
     }
 
-    console.log(usuarios)
-
     return (
         <>
             {usuarios ?
@@ -61,7 +64,7 @@ export function Tables() {
                         <TableHead>
                             <TableRow>
                                 <StyledTableCell align="center">Usuários</StyledTableCell>
-                                <StyledTableCell align="center">Departamento ID</StyledTableCell>
+                                <StyledTableCell align="center">Cargo</StyledTableCell>
                                 <StyledTableCell align="center">Ações</StyledTableCell>
                             </TableRow>
                         </TableHead>
@@ -71,8 +74,14 @@ export function Tables() {
                                     <StyledTableCell component="th" scope="row" align="center">
                                         {row.nome}
                                     </StyledTableCell>
-                                    <StyledTableCell align="center">{row.departamentoId}</StyledTableCell>
                                     <StyledTableCell align="center">{row.cargo}</StyledTableCell>
+                                    <StyledTableCell align="center">
+                                        <div>
+                                        <Link to={`/editar-usuario/${row.id}`}>
+                                            <BiEdit style={{fontSize: '25px', color:"#000fff"}} />
+                                        </Link>
+                                        </div>
+                                    </StyledTableCell>
                                 </StyledTableRow>
                             ))}
                         </TableBody>
@@ -80,7 +89,7 @@ export function Tables() {
                 </TableContainer>
                 :
                 <p>Loading...</p>
-            }
+            } 
         </>
     );
 }

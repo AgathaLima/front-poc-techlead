@@ -8,14 +8,13 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { listarUsuarios } from '../../service/api';
-//import { GoTrash } from "react-icons/go";
-import { BiEdit, BiTrash } from "react-icons/bi";
+import { BiEdit } from "react-icons/bi";
 import { Link } from 'react-router-dom';
+import { listarDepartamentos } from '../../service/api';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
-        backgroundColor: '#0000ff',
+        backgroundColor: '#3d3dfc',
         color: theme.palette.common.white,
     },
     [`&.${tableCellClasses.body}`]: {
@@ -43,42 +42,42 @@ const dados = [
         }
     ]
 
-export function Tables() {
+export function TableDepartamentos() {
 
-    const [usuarios, setUsuarios] = useState();
+    const [departamentos, setDepartamentos] = useState();
 
     useEffect(() => {
-        getUsuarios();
+        getDepartamento();
     }, []);
 
-    async function getUsuarios() {
-        const dados = await listarUsuarios();
-        setUsuarios(dados)
+    const getDepartamento = async () => {
+        const dados = await listarDepartamentos();
+        setDepartamentos(dados)
     }
 
     return (
         <>
-            {usuarios ?
+            {departamentos ?
                 <TableContainer component={Paper}>
                     <Table aria-label="customized table">
                         <TableHead>
                             <TableRow>
-                                <StyledTableCell align="center">Usuários</StyledTableCell>
-                                <StyledTableCell align="center">Cargo</StyledTableCell>
+                                <StyledTableCell align="center">Departamento ID</StyledTableCell>
+                                <StyledTableCell align="center">Nome do Departamento</StyledTableCell>
                                 <StyledTableCell align="center">Ações</StyledTableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {usuarios.map((row, index) => (
-                                <StyledTableRow key={index}>
+                            {departamentos.map((row) => (
+                                <StyledTableRow key={row.id}>
                                     <StyledTableCell component="th" scope="row" align="center">
-                                        {row.nome}
+                                        {row.id}
                                     </StyledTableCell>
-                                    <StyledTableCell align="center">{row.cargo}</StyledTableCell>
+                                    <StyledTableCell align="center">{row.descricao}</StyledTableCell>
                                     <StyledTableCell align="center">
                                         <div>
-                                        <Link to={`/editar-usuario/${row.id}`}>
-                                            <BiEdit style={{fontSize: '25px', color:"#000fff"}} />
+                                        <Link to={`/editar-departamento/${row.id}`}>
+                                            <BiEdit style={{fontSize: '25px', color:"#3d3dfc"}} />
                                         </Link>
                                         </div>
                                     </StyledTableCell>

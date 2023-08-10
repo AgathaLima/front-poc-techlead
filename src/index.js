@@ -9,6 +9,8 @@ import CadastrarUsuario from './routes/cadastrar-usuario';
 import ErrorPage from './routes/errorPage';
 import Departamento from './routes/departamento';
 import EditarUsuario from './routes/editar-usuario';
+import { CadastrarDeparatemento } from './routes/cadastrar-departamento';
+import { EditarDepartamento } from './routes/editar-departamento';
 
 const router = createBrowserRouter([
   {
@@ -31,6 +33,14 @@ const router = createBrowserRouter([
       {
         path: "/editar-usuario/:id",
         element: <EditarUsuario />
+      },
+      {
+        path: "/cadastrar-departamento",
+        element: <CadastrarDeparatemento />
+      },
+      {
+        path: "/editar-departamento/:id",
+        element: <EditarDepartamento />
       },
     ]
   },

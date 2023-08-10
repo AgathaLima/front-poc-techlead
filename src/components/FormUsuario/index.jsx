@@ -3,29 +3,30 @@ import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
-import { criarUsuario, listarDepartamento } from '../../service/api';
+import { criarUsuario, listarDepartamentos, } from '../../service/api';
+import { useNavigate } from 'react-router-dom';
 
 
-export function FormUsuario(){
+export function FormUsuario() {
 
-    useEffect(()=> {
+    useEffect(() => {
         getDepartamento();
     }, [])
 
-    const [ usuario, setUsuario ] = useState({});
+    const navigate = useNavigate();
+
+    const [usuario, setUsuario] = useState({});
     const [departamentos, setDepartamentos] = useState();
 
-    async function getDepartamento(){
-       const data = await listarDepartamento();
+    async function getDepartamento() {
+        const data = await listarDepartamentos();
         setDepartamentos(data);
     }
 
-    function handleSubmit(e){
+    function handleSubmit(e) {
         e.preventDefault()
         criarUsuario(usuario)
     }
-
-    //console.log(usuario)
 
     return (
         <>
@@ -36,7 +37,7 @@ export function FormUsuario(){
             </Box>
             <form onSubmit={handleSubmit}>
                 <Box sx={{
-                    display:'flex',
+                    display: 'flex',
                     justifyContent: 'space-between',
                     height: '250px',
                 }}>
@@ -46,11 +47,11 @@ export function FormUsuario(){
                         justifyContent: 'space-around',
                         width: '48%',
                     }}>
-                        <TextField 
-                            id="outlined-basic" 
-                            label="Nome" 
-                            variant="outlined" 
-                            onChange={(e)=>{
+                        <TextField
+                            id="outlined-basic"
+                            label="Nome"
+                            variant="outlined"
+                            onChange={(e) => {
                                 setUsuario({
                                     ...usuario,
                                     nome: e.target.value
@@ -58,27 +59,27 @@ export function FormUsuario(){
                             }}
                             required
                         />
-                        <TextField 
-                            id="outlined-basic" 
-                            label="CPF" 
-                            variant="outlined" 
-                            onChange={(e)=> setUsuario({
+                        <TextField
+                            id="outlined-basic"
+                            label="CPF"
+                            variant="outlined"
+                            onChange={(e) => setUsuario({
                                 ...usuario,
                                 cpf: e.target.value
                             })}
                             required
                         />
-                        <TextField 
-                            id="outlined-basic" 
-                            label="Email" 
+                        <TextField
+                            id="outlined-basic"
+                            label="Email"
                             variant="outlined"
-                            onChange={(e)=>{
+                            onChange={(e) => {
                                 setUsuario({
                                     ...usuario,
                                     email: e.target.value
                                 })
                             }}
-                            required 
+                            required
                         />
                     </Box>
                     <Box sx={{
@@ -87,11 +88,11 @@ export function FormUsuario(){
                         justifyContent: 'space-around',
                         width: '48%',
                     }}>
-                        <TextField 
-                            id="outlined-basic" 
-                            label="Cargo" 
-                            variant="outlined" 
-                            onChange={(e)=>{
+                        <TextField
+                            id="outlined-basic"
+                            label="Cargo"
+                            variant="outlined"
+                            onChange={(e) => {
                                 setUsuario({
                                     ...usuario,
                                     cargo: e.target.value
@@ -99,9 +100,9 @@ export function FormUsuario(){
                             }}
                             required
                         />
-                        <TextField 
-                            id="select" 
-                            label="Departamento" 
+                        <TextField
+                            id="select"
+                            label="Departamento"
                             select
                             onChange={(e) => {
                                 setUsuario({
@@ -111,30 +112,32 @@ export function FormUsuario(){
                             }}
                         >
                             {departamentos &&
-                            departamentos.map(departamento => {
-                                return (
-                                <MenuItem key={departamento.id} value={departamento.id}>{departamento.descricao}</MenuItem>
-                                )
-                            })
+                                departamentos.map(departamento => {
+                                    return (
+                                        <MenuItem key={departamento.id} value={departamento.id}>{departamento.descricao}</MenuItem>
+                                    )
+                                })
                             }
-                        </TextField>                 
+                        </TextField>
                     </Box>
                 </Box>
-                <Box sx={{display: 'flex', justifyContent: 'space-around'}}>
-                    <Button sx={{
-                        color: '#00ff',
-                        border: '2px solid #00ff',
-                        width: '250px',
-                    }}>
+                <Box sx={{ display: 'flex', justifyContent: 'space-around' }}>
+                    <Button
+                        onClick={() => navigate('/')}
+                        sx={{
+                            color: '#3d3dfc',
+                            border: '2px solid #3d3dfc',
+                            width: '250px',
+                        }}>
                         Voltar
                     </Button>
                     <Button
-                     type='submit'
-                     sx={{
-                        color: '#fff',
-                        background: '#00ff',
-                        width: '250px',
-                    }}>
+                        type='submit'
+                        sx={{
+                            color: '#fff',
+                            background: '#3d3dfc',
+                            width: '250px',
+                        }}>
                         Cadastrar
                     </Button>
                 </Box>

@@ -4,8 +4,6 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import { Tables } from '../Tables';
-import { FormUsuario } from '../FormUsuario';
 import { Header } from '../Header';
 
 function TabPanel(props) {

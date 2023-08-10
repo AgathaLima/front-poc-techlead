@@ -12,7 +12,7 @@ const menuStyles = {
 export function Header (){
     return (
         <>
-            <Box sx={{display: 'flex', justifyContent: 'space-between', background: '#0000ff', alignItems: 'center'}}>
+            <Box sx={{display: 'flex', justifyContent: 'space-between', background: '#3d3dfc', alignItems: 'center'}}>
                 <Box sx={{width: '300px', height: '150px', background: '#e0e0e0', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                     <h1>Logo Aqui</h1>
                 </Box>

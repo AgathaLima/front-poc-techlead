@@ -1,15 +1,16 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
-import { editarUsuario, listarDepartamento, listarUsuarioPorId } from '../service/api';
+import { editarUsuario, listarDepartamentos, listarUsuarioPorId } from '../service/api';
 
 
 export default function EditarUsuario(){
 
     const { id } = useParams();
+    const navigate = useNavigate();
 
     useEffect(()=> {
         getDepartamento();
@@ -20,7 +21,7 @@ export default function EditarUsuario(){
     const [departamentos, setDepartamentos] = useState();
 
     async function getDepartamento(){
-       const data = await listarDepartamento();
+       const data = await listarDepartamentos();
         setDepartamentos(data);
     }
 
@@ -32,9 +33,10 @@ export default function EditarUsuario(){
     function handleSubmit(e){
         e.preventDefault()
         editarUsuario(usuario, id);
+        return navigate('/');
     }
 
-    console.log(usuario);
+    console.log("usuario", usuario);
 
     return(
         <>
@@ -122,9 +124,11 @@ export default function EditarUsuario(){
                     </Box>
                 </Box>
                 <Box sx={{display: 'flex', justifyContent: 'space-around'}}>
-                    <Button sx={{
-                        color: '#00ff',
-                        border: '2px solid #00ff',
+                    <Button 
+                        onClick={() =>  navigate('/')}
+                        sx={{
+                        color: '#3d3dfc',
+                        border: '2px solid #3d3dfc',
                         width: '250px',
                     }}>
                         Voltar
@@ -133,7 +137,7 @@ export default function EditarUsuario(){
                      type='submit'
                      sx={{
                         color: '#fff',
-                        background: '#00ff',
+                        background: '#3d3dfc',
                         width: '250px',
                     }}>
                         Salvar

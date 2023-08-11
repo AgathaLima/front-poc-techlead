@@ -8,7 +8,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { BiEdit } from "react-icons/bi";
+import { BiDownload, BiEdit } from "react-icons/bi";
 import { Link } from 'react-router-dom';
 import { listarDepartamentos } from '../../service/api';
 
@@ -78,6 +78,13 @@ export function TableDepartamentos() {
                                         <div>
                                         <Link to={`/editar-departamento/${row.id}`}>
                                             <BiEdit style={{fontSize: '25px', color:"#3d3dfc"}} />
+                                        </Link>
+                                        <Link
+                                          to={`${process.env.REACT_APP_API_URL}/department/${row.id}/report`}
+                                        >
+                                          <BiDownload
+                                            style={{ fontSize: "25px", color: "#3d3dfc" }}
+                                          />
                                         </Link>
                                         </div>
                                     </StyledTableCell>

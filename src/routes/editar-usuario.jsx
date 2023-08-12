@@ -13,11 +13,11 @@ export default function EditarUsuario(){
     const navigate = useNavigate();
 
     useEffect(()=> {
-        getDepartamento();
         getUsuario();
+        getDepartamento();
     }, [])
 
-    const [ usuario, setUsuario ] = useState({});
+    const [ usuario, setUsuario ] = useState({departamentoId: ''});
     const [departamentos, setDepartamentos] = useState();
 
     async function getDepartamento(){
@@ -35,8 +35,6 @@ export default function EditarUsuario(){
         editarUsuario(usuario, id);
         return navigate('/');
     }
-
-    console.log("usuario", usuario);
 
     return(
         <>
@@ -103,7 +101,6 @@ export default function EditarUsuario(){
                             required
                         />
                         <TextField 
-                            id="select" 
                             select
                             value={usuario.departamentoId}
                             onChange={(e) => {
@@ -113,10 +110,9 @@ export default function EditarUsuario(){
                                 })
                             }}
                         >
-                            {departamentos &&
-                            departamentos.map(departamento => {
+                            {departamentos?.map(departamento => {
                                 return (
-                                <MenuItem key={departamento.id} value={departamento.id}>{departamento.descricao}</MenuItem>
+                                 <MenuItem key={departamento.id} value={departamento.id}>{departamento.descricao}</MenuItem>
                                 )
                             })
                             }

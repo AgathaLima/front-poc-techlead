@@ -32,7 +32,7 @@ export async function criarUsuario(dados) {
 //http://127.0.0.1:8000/users/editar/${id}
 export async function editarUsuario(dados, id) {
   try {
-    axios.put(`${process.env.REACT_APP_API_URL}/users/${id}`, {
+    axios.put(`${process.env.REACT_APP_API_URL}/users/editar/${id}`, {
       ...dados,
     });
   } catch (error) {

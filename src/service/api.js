@@ -1,5 +1,7 @@
 import axios from "axios";
 
+axios.defaults.headers.common = {'Authorization': localStorage.getItem("isAuth")}
+
 //const api = process.env.ENDPOINT_API;
 
 //http://127.0.0.1:8000/users
@@ -7,6 +9,21 @@ export async function listarUsuarios() {
   const response = await axios.get(`${process.env.REACT_APP_API_URL}/users`);
   const data = response.data;
   return data;
+}
+
+export async function login(dados) {
+
+  try {
+    const response = await axios.post(`${process.env.REACT_APP_API_URL}/users/login`, { ...dados });
+    const data = response.data;
+    localStorage.setItem("isAuth", data.tokens);
+    return data;
+  } catch (error) {
+    console.log(error);
+
+  }
+
+
 }
 
 // http://127.0.0.1:8000/users/${id}

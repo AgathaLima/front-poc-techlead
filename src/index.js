@@ -11,6 +11,9 @@ import Departamento from './routes/departamento';
 import EditarUsuario from './routes/editar-usuario';
 import { CadastrarDeparatemento } from './routes/cadastrar-departamento';
 import { EditarDepartamento } from './routes/editar-departamento';
+import { Login } from './routes/login';
+
+import AuthGuard from './hoc/authGuard';
 
 const router = createBrowserRouter([
   {
@@ -20,27 +23,32 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home />
+        Component: AuthGuard(Home)
       },
+
       {
         path: "/cadastrar-usuario",
-        element: <CadastrarUsuario />
+        Component:AuthGuard(CadastrarUsuario)
       },
       {
         path: "/departamento",
-        element: <Departamento />
+        Component: AuthGuard(Departamento)
       },
       {
         path: "/editar-usuario/:id",
-        element: <EditarUsuario />
+        Component: AuthGuard(EditarUsuario)
       },
       {
         path: "/cadastrar-departamento",
-        element: <CadastrarDeparatemento />
+        Component: AuthGuard(CadastrarDeparatemento)
       },
       {
         path: "/editar-departamento/:id",
-        element: <EditarDepartamento />
+        Component: AuthGuard(EditarDepartamento)
+      },
+      {
+        path: "/login",
+        Component: Login
       },
     ]
   },

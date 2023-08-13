@@ -13,9 +13,9 @@ export function FormLogin() {
     const navigate = useNavigate();
 
 
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
         e.preventDefault();
-        login(usuario);
+        await login(usuario);
         return navigate('/');
 
     }
